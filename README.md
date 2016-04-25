@@ -30,7 +30,7 @@ At first. the spring load actorSystem ,which we config it when spring start. set
 
 Second. we use SpringExtension build Props(which use to create actor). 
 
-Third step. SpringActorProducer use Props crate actor.
+Third step. Props use SpringActorProducer create actor.
 
 # Exploring the Code
 
