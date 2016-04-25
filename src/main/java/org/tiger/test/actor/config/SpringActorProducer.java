@@ -14,16 +14,18 @@ import org.springframework.context.ApplicationContext;
 public class SpringActorProducer implements IndirectActorProducer {
     final ApplicationContext applicationContext;
     final String actorBeanName;
+    final Object[] constructArgs;
 
     public SpringActorProducer(ApplicationContext applicationContext,
-                               String actorBeanName) {
+                               String actorBeanName, Object[] constructArgs) {
         this.applicationContext = applicationContext;
         this.actorBeanName = actorBeanName;
+        this.constructArgs = constructArgs;
     }
 
     @Override
     public Actor produce() {
-        return (Actor) applicationContext.getBean(actorBeanName);
+        return (Actor) applicationContext.getBean(actorBeanName,constructArgs);
     }
 
     @Override

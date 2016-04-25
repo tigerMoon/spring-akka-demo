@@ -8,6 +8,8 @@ import org.tiger.test.actor.StarActor;
 import org.tiger.test.actor.config.SpringExtension;
 import scala.concurrent.duration.FiniteDuration;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -24,10 +26,15 @@ public class StarApp {
     private ActorSystem actorSystem;
 
     public void run() {
-        actorSystem.actorOf(SpringExtension.SpringExtProvider.get(actorSystem).props("Bob", "Alice", "Rock", "Paper", "Scissors",
-                "North", "South"), "name_ctor");
-        ActorRef starActor1 = actorSystem.actorOf(SpringExtension.SpringExtProvider.get(actorSystem).props("Howya doing", 1, "Nobody"), "star_actor1");
-        ActorRef starActor2 = actorSystem.actorOf(SpringExtension.SpringExtProvider.get(actorSystem).props("Happy to meet you", 1, "Nobody"), "star_actor2");
+        List<String> names = new ArrayList<>();
+        names.add("Bob");
+        names.add("Alice");
+        names.add("Rock");
+        names.add("Paper");
+        actorSystem.actorOf(SpringExtension.SpringExtProvider.get(actorSystem).props("NamerActor",names), "namer");
+
+        ActorRef starActor1 = actorSystem.actorOf(SpringExtension.SpringExtProvider.get(actorSystem).props("StarActor","How are you doing ?", 1, "Nobody"), "star_actor1");
+        ActorRef starActor2 = actorSystem.actorOf(SpringExtension.SpringExtProvider.get(actorSystem).props("StarActor","Happy to meet you", 1, "Nobody"), "star_actor2");
         try {
             Thread.sleep(500);
             starActor1.tell(new StarActor.Greet(starActor2), starActor1);
@@ -35,6 +42,5 @@ public class StarApp {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
     }
 }

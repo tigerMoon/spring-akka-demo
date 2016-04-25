@@ -101,17 +101,17 @@ public class StarActor extends UntypedActor {
     @Override
     public void onReceive(Object message) throws Exception {
         if (message instanceof NamerActor.SetName) {
-            NamerActor.SetName myName = (NamerActor.SetName) message;
+            myName =  ((NamerActor.SetName) message).getName();
             log.info("{} is the {}th generation child of {}", myName, gennum, parent);
         }
         /**
          * hotswapping the Actor’s message loop (e.g. its implementation) at runtime
          * Warning: Please note that the actor will revert to its original behavior when restarted by its Supervisor.
          */
-        getContext().become(named());
+        getContext().become(named(myName));
     }
 
-    private Procedure<Object> named() {
+    private Procedure<Object> named(String myName) {
         return message -> {
             if (message instanceof Greet) {
                 Greet greet = (Greet) message;
@@ -127,13 +127,13 @@ public class StarActor extends UntypedActor {
                 getContext().actorOf(props(greeting,gennum+1,myName));
             }else if(message == IntroduceMe){
                 starsKnown.forEach((key,value) -> {
-                    value.tell(new Greet(getSender()),value);
+                    log.info("key:{} , value:{}", key, value);
+                    value.tell(new Greet(getSender()),getSelf());
                 });
             }else if(message == Die){
                 log.info("{} says: I`d like to thank the Academy...",myName);
                 getContext().stop(getSelf());
             }
-
         };
     }
 
