@@ -48,5 +48,7 @@ subclass. It can be used to allow a dependency injection framework to determine 
 ## Conclusions
 
 Akka actor devote itself to write correct distributed, concurrent, fault-tolerant and scalable applications easily. and i think it`s more useful to the application with more
-interactions. Akka isolation application from **condition rate** and **synchronized** code and has a integrity fault-tolerant strategies.(it is highly abstraction)    
+interactions. Akka isolation application from **condition rate** and **synchronized** code and has a integrity fault-tolerant strategies.(it is a highly abstraction)    
+
+   
    
