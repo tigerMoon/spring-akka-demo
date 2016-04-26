@@ -46,7 +46,7 @@ subclass. It can be used to allow a dependency injection framework to determine 
 ` **Actor` : `@Scope("prototype")` must use this. by default, spring use singleton. but when actor restart see [ What Restarting Means](http://doc.akka.io/docs/akka/2.4.0/general/supervision.html#supervision-restart)
    
 ## Conclusions
-
+since Actors are objects which encapsulate state and behavior, they communicate exclusively by exchanging messages which are placed into the recipient’s mailbox.
 Akka actor devote itself to write correct distributed, concurrent, fault-tolerant and scalable applications easily. and i think it`s more useful to the application with more
 interactions. Akka isolation application from **rate condition** and **synchronized** code and has a integrity fault-tolerant strategies.(it is a highly abstraction)    
 
