@@ -1,4 +1,4 @@
-# spring-boot-akka-demo
+# spring-akka-demo
 
 
 
