@@ -55,4 +55,5 @@ interactions. Akka isolation application from **rate condition** and **synchroni
 1. http://www.lightbend.com/activator/template/akka-java-spring#code/src/test/java/sample/SpringTest.java 
 2. http://doc.akka.io/docs/akka/2.4.0/java/untyped-actors.html?_ga=1.93414229.97008230.1461550105#Dependency_Injection
 3. http://doc.akka.io/docs/akka/2.4.4/java/extending-akka.html   
+4. http://letitcrash.com/post/55958814293/akka-dependency-injection
    
