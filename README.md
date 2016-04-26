@@ -50,5 +50,9 @@ subclass. It can be used to allow a dependency injection framework to determine 
 Akka actor devote itself to write correct distributed, concurrent, fault-tolerant and scalable applications easily. and i think it`s more useful to the application with more
 interactions. Akka isolation application from **rate condition** and **synchronized** code and has a integrity fault-tolerant strategies.(it is a highly abstraction)    
 
-   
+## reference
+
+1. http://www.lightbend.com/activator/template/akka-java-spring#code/src/test/java/sample/SpringTest.java 
+2. http://doc.akka.io/docs/akka/2.4.0/java/untyped-actors.html?_ga=1.93414229.97008230.1461550105#Dependency_Injection
+3. http://doc.akka.io/docs/akka/2.4.4/java/extending-akka.html   
    
