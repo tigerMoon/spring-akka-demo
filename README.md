@@ -36,9 +36,17 @@ Third step. Props use SpringActorProducer create actor.
 
 `AkkaConfig` : register Actor system singleton for this application.
 
-`SpringExtension`: 
+`SpringExtension`: Extensions will only be loaded once per ActorSystem, which will be managed by Akka. You can choose to have your Extension loaded on-demand or 
+at ActorSystem creation time through the Akka configuration.and is comprised of 2 basic components: an Extension and an ExtensionId. (Warning: Since an extension is a way to hook into Akka itself, the implementor of the extension needs to
+ensure the thread safety of his/her extension.)
 
-`SpringActorProducer`:
+`SpringActorProducer`: implements from `IndirectActorProducer` , which use to defines a class of actor creation strategies deviating from the usual default of just reflectively instantiating the [[Actor]]
+subclass. It can be used to allow a dependency injection framework to determine the actual actor class and how it shall be instantiated. so you can build several producer for your own use
     
-    
+` **Actor` : `@Scope("prototype")` must use this. by default, spring use singleton. but when actor restart see [ What Restarting Means](http://doc.akka.io/docs/akka/2.4.0/general/supervision.html#supervision-restart)
+   
+## Conclusions
 
+Akka actor devote itself to write correct distributed, concurrent, fault-tolerant and scalable applications easily. and i think it`s more useful to the application with more
+interactions. Akka isolation application from **condition rate** and **synchronized** code and has a integrity fault-tolerant strategies.(it is highly abstraction)    
+   
